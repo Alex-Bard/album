@@ -1,0 +1,8 @@
+{
+    "name": "vendor/php-ffmpeg",
+    "require-dev": {
+    },
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^0.14.0"
+    }
+}
