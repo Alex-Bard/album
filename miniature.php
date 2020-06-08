@@ -51,13 +51,7 @@ function resize($file_input, $file_output, $w_o, $h_o, $percent = false) {
         return  $func($img_o,$file_output);
     }
 }
-//resize("files/full/DSC_0489.jpg","files/full/12443.jpg","300","","");
-/**
- * @param string $aInitialImageFilePath - строка, представляющая путь к обрезаемому изображению
- * @param string $aNewImageFilePath - строка, представляющая путь куда нахо сохранить выходное обрезанное изображение
- * @param int $aNewImageWidth - ширина выходного обрезанного изображения
- * @param int $aNewImageHeight - высота выходного обрезанного изображения
- */
+
 function cropImage($aInitialImageFilePath, $aNewImageFilePath, $aNewImageWidth, $aNewImageHeight) {
     if (($aNewImageWidth < 0) || ($aNewImageHeight < 0)) {
         return false;
@@ -131,7 +125,7 @@ function file_info_date($file){
                 if (($key === "COMPUTED") && ($name === "DateTime")) {
                     $date = $val;
                 }
-                // echo "$key\n.$name \n: $val<br />\n";
+
             }
         }
         return $date;
@@ -151,7 +145,7 @@ function file_info_model($file){
                 if (($key === "IFD0") && ($name === "Model")) {
                     $model = $val;
                 }
-                // echo "$key\n.$name \n: $val<br />\n";
+
             }
         }
 
@@ -375,13 +369,12 @@ function rotateImage ($aInitialImageFilePath, $aNewImageFilePath){
         }
     }
 }
-//rotateImage ('files/full/DSC_1842.JPG', 'files/thumb/123.JPG')
+
 function cropVidImage($aInitialImageFilePath, $aNewImageFilePath, $aNewImageWidth, $aNewImageHeight) {
     if (($aNewImageWidth < 0) || ($aNewImageHeight < 0)) {
         return false;
     }
-   // $exif = exif_read_data($aInitialImageFilePath);
-    // Массив с поддерживаемыми типами изображений
+
     $lAllowedExtensions = array(1 => "gif", 2 => "jpeg", 3 => "png");
 
     // Получаем размеры и тип изображения в виде числа
@@ -433,10 +426,10 @@ function addPlayLgo($img,$logo) {
 // imagesy - получает высоту изображения
     $wmH=imagesy($wm);
 
-// imagecreatetruecolor - создаёт новое изображение true color
+
     $image=imagecreatetruecolor($wmW, $wmH);
 
-// выясняем расширение изображения на которое будем накладывать водяной знак
+
     if(preg_match("/.gif/i",$img)):
         $image=imagecreatefromgif($img);
     elseif(preg_match("/.jpeg/i",$img) or preg_match("/.jpg/i",$img)):
@@ -446,30 +439,17 @@ function addPlayLgo($img,$logo) {
     else:
         die("Ошибка! Неизвестное расширение изображения");
     endif;
-// узнаем размер изображения
+
     $size=getimagesize($img);
 
-// указываем координаты, где будет располагаться водяной знак
-    /*
-    * $size[0] - ширина изображения
-    * $size[1] - высота изображения
-    * - 10 -это расстояние от границы исходного изображения
-    */
+
     $cx=$size[0]-$wmW;
     $cy=$size[1]-$wmH;
 
-    /* imagecopyresampled - копирует и изменяет размеры части изображения
-    * с пересэмплированием
-    */
+
     imagecopyresampled ($image, $wm, $cx, $cy, 0, 0, $wmW, $wmH, $wmW, $wmH);
 
-    /* imagejpeg - создаёт JPEG-файл filename из изображения image
-    * третий параметр - качество нового изображение
-    * параметр является необязательным и имеет диапазон значений
-    * от 0 (наихудшее качество, наименьший файл)
-    * до 100 (наилучшее качество, наибольший файл)
-    * По умолчанию используется значение по умолчанию IJG quality (около 75)
-    */
+
     imagejpeg($image,$img,100);
 
 // imagedestroy - освобождает память

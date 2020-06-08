@@ -1,8 +1,13 @@
 {
-    "name": "vendor/php-ffmpeg",
-    "require-dev": {
-    },
     "require": {
-        "php-ffmpeg/php-ffmpeg": "^0.14.0"
+        "zircote/swagger-php": "3.0.4"
+    },
+    "config": {
+        "platform": {
+            "php": "7.2.18"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6"
     }
 }

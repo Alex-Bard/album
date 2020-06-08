@@ -1,9 +1,10 @@
 <?php
+
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "User";
+$password = "123456789";
 $dbname = "album";
-// Create connection
+
 $bd = new mysqli($servername, $username, $password,$dbname);
 
 // Check connection
