@@ -1,53 +1,10 @@
 <?php
-/*if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    if (isset($_SERVER['REQUEST_URI']))
-        $vars = explode('/', $_SERVER['REQUEST_URI']);
-    for ($i = 0; $i < count($list); $i++) {
-        if (isset($vars[3]) && ($vars[3] == $list[$i]->id)) {
-            array_splice($list, $i, 1);
-            $notDeleted = false;
-            header("HTTP/1.0 200 OK");
-        }
-    }
-    if ($notDeleted)
-        header("HTTP/1.0 406 Not Acceptable");
-} elseif (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'PUT') {
-    $vars = json_decode(file_get_contents("php://input"));
-    if (isset($vars->text)){
-        $floatingElement = 0;
-        $insertFlag = false;
-        foreach ($list as &$element) {
-            if ($element->id - $floatingElement > 0) {
-                $insertedElement = array($floatingElement => new ArrayElement($floatingElement, $vars->text, "x"));
-                array_splice($list, $floatingElement, 0, $insertedElement);
-                $insertFlag = true;
-                break 1;
-            } else {
-                $floatingElement++;
-            }
-        }
-        unset($element);
-        if (!$insertFlag){
-            array_push($list, new ArrayElement($floatingElement, $vars->text, "x"));
-        }
-        header("HTTP/1.0 200 OK");
-    }
-    else
-        header("HTTP/1.0 400 Bad Request");
-} elseif (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $vars = json_decode(file_get_contents("php://input"));
-    if (isset($vars->id) && isset($vars->text)) {
-        for ($i = 0; $i<count($list); $i++)
-            if ($list[$i]->id == $vars->id) {
-                $list[$i]->text = $vars->text;
-                break 1;
-            }
-        header("HTTP/1.0 200 OK");
-    }
-    else
-        header("HTTP/1.0 405 Invalid input");
-}*/
-
+/**
+ * @OA\Info(
+ *   title=" family album",
+ *   version="1.0.0",
+ * )
+ */
 require 'C:\wamp64\www\course\bd.php';
 if(!isset($_COOKIE['session'])) {
     header('Location: login.html');
@@ -87,6 +44,68 @@ else {
     }
 }
 $bd->close();
+/**
+ * @OA\Get(
+ *     path="/files",
+ *     summary="getFiles",
+ *     operationId="getFiles",
+ *     @OA\Parameter(
+ *         name="date",
+ *         in="query",
+ *         @OA\Schema(
+ *             type="integer"
+ *         ),
+ *     ),
+ *     @OA\Parameter(
+ *         name="start",
+ *         in="query",
+ *         @OA\Schema(
+ *             type="integer"
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="ok"
+ *         @OA\Schema(
+ *             type="object",
+ *             @OA\properties(
+ *                  @OA\id(
+ *                     type="integer",
+ *                     description="the file id",
+ *                   ),
+ *                  @OA\miliature_ref(
+ *                     type="string",
+ *                   ),
+ *                  @OA\fileName(
+ *                     type="integer",
+ *                   ),
+ *                  @OA\original_ref(
+ *                     type="string",
+ *                   ),
+ *                  @OA\date(
+ *                     type="string",
+ *                   ),
+ *                  @OA\GPSLatitude(
+ *                     type="string",
+ *                   ),
+ *                  @OA\GPSLongitude(
+ *                     type="string",
+ *                   ),
+ *                  @OA\model(
+ *                     type="string",
+ *                   ),
+ *               ),
+ *           ),
+ *         ),
+ *         @OA\Response(
+ *            response=400,
+ *            description="Bad Request",
+ *         ),
+ *         @OA\Response(
+ *            response=403,
+ *            description="Forbidden",
+ *     ),
+ *),
+ */
 function getFilesOnLimit($bd, $start)
 {
     $JsonString = "";
@@ -121,11 +140,11 @@ function getFilesOnData($bd, $date1, $date2, $start)
         //echo "[";
         $JsonString .= "[";
         while ($row = mysqli_fetch_assoc($result)) {
-            //echo "{\"name\":\"". $row["name"]. "\",\"orig\":\"" . $row["orig"]. "\",\"miliature\":\"" . $row["miniature"]."\"},";
+
             $JsonString .= "{\"id\":\"" . $row["idFile"] . "\",\"name\":\"" . $row["nameFile"] . "\",\"date\":\"" . $row["dateFile"] . "\",\"orig\":\"" . $row["orig"] . "\",\"model\":\"" . $row["model"] . "\",\"miliature\":\"" . $row["miniature"] . "\",\"lat\":\"" . $row["lat"] . "\",\"clong\":\"" . $row["Clong"] . "\"},";
         }
         $JsonString = mb_substr($JsonString, 0, -1);
-        //echo "]";
+
         $JsonString .= "]";
         print_r($JsonString);
 
@@ -133,6 +152,33 @@ function getFilesOnData($bd, $date1, $date2, $start)
         header("HTTP/1.0 404 Not Found");
     }
 }
+/**
+ * @OA\Delete(
+ *     path="/files",
+ *     summary="deleteFile",
+ *     operationId="deleteFile",
+ *     @OA\Parameter(
+ *         name="fileId",
+ *         in="query",
+ *         @OA\Schema(
+ *             type="integer"
+ *         ),
+ *     ),
+ *
+ *      @OA\Response(
+ *          response=200,
+ *           description="ok",
+ *       ),
+ *       @OA\Response(
+ *            response=403,
+ *            description="Forbidden",
+ *       ),
+ *       @OA\Response(
+ *          response=400,
+ *           description="Bad Request",
+ *       ),
+ *  ),
+ */
 function deleteFile ($id,$bd){
     $sql = "SELECT orig, miniature FROM  files where idFile = '$id'";
     $result = mysqli_query($bd, $sql) or die (mysqli_error($bd));
