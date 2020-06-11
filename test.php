@@ -42,14 +42,12 @@ function DeleteUser( $vars,$bd){
 class BDTest extends TestCase{
     public function testBDcreate()
     {
-        $vars = $GLOBALS['vars'];
-        $bd = $GLOBALS['bd'];
+        global $vars, $bd;
         $this->assertEquals(2, createUser( $vars, $bd ));
     }
     public function testBDdelete()
     {
-        $vars = $GLOBALS['vars'];
-        $bd = $GLOBALS['bd'];
+        global $vars, $bd;
         $this->assertEquals(1, deleteUser($vars,$bd));
     }
 }
