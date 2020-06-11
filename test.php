@@ -28,9 +28,9 @@ VALUES ('$login', '$password', '$token')";
 function DeleteUser( $vars,$bd){
     $login = $vars['login'];
     $sql = "SELECT  id FROM users WHERE login='$login'";
-    $result = mysqli_query($bd, $sql) or die (mysqli_error($bd));
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
+    $result = $bd->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
         $id = $row['id'];
         $sql = "DELETE FROM users  WHERE id='$id'";
 
