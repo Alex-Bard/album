@@ -41,20 +41,6 @@ function DeleteUser( $vars,$bd){
 class BDTest extends TestCase{
     private $vars, $bd;
     protected function setUp(){
-<<<<<<< HEAD
-    	global $vars , $bd;
-	$this->vars = $vars;
-	$this->bd = $bd;
-    }
-    public function testBDcreate()
-    {
-        $this->assertEquals(1, deleteUser( $this->vars, $this->bd ));
-    }
-    public function testBDdelete()
-    {
-        
-        $this->assertEquals(2, createUser($this->vars,$this->bd));
-=======
         global $vars;
         $servername = "localhost";
         $username = "User";
@@ -77,6 +63,5 @@ class BDTest extends TestCase{
     public function testBDdelete()
     {
         $this->assertEquals(1, deleteUser($this->vars,$this->bd));
->>>>>>> 1cc2ef19eaeb3f4c7cb5919e30990648e6b25664
     }
 }
