@@ -69,11 +69,11 @@ $bd->close();
  *         @OA\Schema(
  *             @OA\Property(property="id", type="integer"),
  *             @OA\Property(property="miliature_ref", type="string"),
- *             @OA\Property(property="fileName", type="string")
+ *             @OA\Property(property="fileName", type="string"),
  *             @OA\Property(property="original_ref", type="string"),
  *             @OA\Property(property="date", type="string"),
  *             @OA\Property(property="GPSLatitude", type="string"),
- *             @OA\Property(property="GPSLongitude", type="string")
+ *             @OA\Property(property="GPSLongitude", type="string"),
  *             @OA\Property(property="model", type="string"),
  *                   ),
  *               ),
