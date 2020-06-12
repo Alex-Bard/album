@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 //require_once "bd.php";
-require_once'bd.php';
 $vars = array(
     'login' => "123123",
     'pass' => "123",
@@ -42,6 +41,7 @@ function DeleteUser( $vars,$bd){
 class BDTest extends TestCase{
     private $vars, $bd;
     protected function setUp(){
+<<<<<<< HEAD
     	global $vars , $bd;
 	$this->vars = $vars;
 	$this->bd = $bd;
@@ -54,5 +54,31 @@ class BDTest extends TestCase{
     {
         
         $this->assertEquals(2, createUser($this->vars,$this->bd));
+=======
+        global $vars;
+        $servername = "localhost";
+        $username = "User";
+        $password = "123456789";
+        $dbname = "album";
+// Create connection
+        $bd = new mysqli($servername, $username, $password,$dbname);
+        if ($bd->connect_error) {
+            die("Connection failed: " . $bd->connect_error);
+        }
+        else{
+            $this->vars = $vars;
+            $this->bd = $bd;
+        }
+    }
+    public function testBDcreate()
+    {
+        global $vars, $bd;
+        $this->assertEquals(2, createUser( $this->vars, $this->bd ));
+    }
+    public function testBDdelete()
+    {
+        global $vars, $bd;
+        $this->assertEquals(1, deleteUser($this->vars,$this->bd));
+>>>>>>> 1cc2ef19eaeb3f4c7cb5919e30990648e6b25664
     }
 }
