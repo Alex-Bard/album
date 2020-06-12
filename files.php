@@ -67,36 +67,16 @@ $bd->close();
  *         response=200,
  *         description="ok",
  *         @OA\Schema(
- *             type="object",
- *             @OA\properties(
- *                  @OA\id(
- *                     type="integer",
- *                     description="the file id",
- *                   ),
- *                  @OA\miliature_ref(
- *                     type="string",
- *                   ),
- *                  @OA\fileName(
- *                     type="integer",
- *                   ),
- *                  @OA\original_ref(
- *                     type="string",
- *                   ),
- *                  @OA\date(
- *                     type="string",
- *                   ),
- *                  @OA\GPSLatitude(
- *                     type="string",
- *                   ),
- *                  @OA\GPSLongitude(
- *                     type="string",
- *                   ),
- *                  @OA\model(
- *                     type="string",
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="miliature_ref", type="string"),
+ *             @OA\Property(property="fileName", type="string")
+ *             @OA\Property(property="original_ref", type="string"),
+ *             @OA\Property(property="date", type="string"),
+ *             @OA\Property(property="GPSLatitude", type="string"),
+ *             @OA\Property(property="GPSLongitude", type="string")
+ *             @OA\Property(property="model", type="string"),
  *                   ),
  *               ),
- *           ),
- *         ),
  *         @OA\Response(
  *            response=400,
  *            description="Bad Request",
