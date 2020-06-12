@@ -24,24 +24,12 @@ else {
          *         response=200,
          *         description="ok",
          *         @OA\Schema(
-         *             type="object",
-         *             @OA\properties(
-         *                  @OA\id(
-         *                     type="integer",
-         *                     description="userId",
-         *                   ),
-         *                  @OA\role(
-         *                     type="string",
-         *                   ),
-         *                  @OA\login(
-         *                     type="integer",
-         *                   ),
-         *                  @OA\tokBot(
-         *                     type="string",
-         *                   ),
+         *             @OA\Property(property="id", type="integer", description="userId"),
+         *             @OA\Property(property="role", type="string"),
+         *             @OA\Property(property="login", type="integer")
+         *             @OA\Property(property="tocBot", type="string"),
          *               ),
          *           ),
-         *         ),
          *),
          */
          if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
