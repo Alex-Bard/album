@@ -2,126 +2,107 @@ openapi: 3.0.0
 info:
   title: ' family album'
   version: 1.0.0
-servers:
-- url: /
 paths:
   admin:
     put:
       summary: delete_user
       operationId: delete_user
       parameters:
-      - name: userId
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
+        -
+          name: userId
+          in: query
+          schema:
+            type: integer
       responses:
-        "200":
+        '200':
           description: ok
-        "404":
-          description: User Not Found
-        "400":
-          description: Bad Request
+        '404':
+          description: 'User Not Found'
+        '400':
+          description: 'Bad Request'
     post:
       summary: role_user
       operationId: role_user
       parameters:
-      - name: userId
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
-      - name: userRole
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
+        -
+          name: userId
+          in: query
+          schema:
+            type: integer
+        -
+          name: userRole
+          in: query
+          schema:
+            type: integer
       responses:
-        "200":
+        '200':
           description: ok
-        "404":
-          description: User Not Found
-        "400":
-          description: Bad Request
-        "403":
+        '404':
+          description: 'User Not Found'
+        '400':
+          description: 'Bad Request'
+        '403':
           description: Forbidden
   /files:
     delete:
       summary: deleteFile
       operationId: deleteFile
       parameters:
-      - name: fileId
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
+        -
+          name: fileId
+          in: query
+          schema:
+            type: integer
       responses:
-        "200":
+        '200':
           description: ok
-        "403":
+        '403':
           description: Forbidden
-        "400":
-          description: Bad Request
+        '400':
+          description: 'Bad Request'
   /login:
     post:
       summary: login
       operationId: login
       parameters:
-      - name: login
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: password
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
+        -
+          name: login
+          in: query
+          schema:
+            type: string
+        -
+          name: password
+          in: query
+          schema:
+            type: string
       responses:
-        "200":
+        '200':
           description: ok
-        "403":
+        '403':
           description: Forbidden
-        "400":
-          description: Bad Request
-        "404":
-          description: user not found
+        '400':
+          description: 'Bad Request'
+        '404':
+          description: 'user not found'
   reg:
     post:
       summary: reg
       operationId: reg
       parameters:
-      - name: login
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: password
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
+        -
+          name: login
+          in: query
+          schema:
+            type: string
+        -
+          name: password
+          in: query
+          schema:
+            type: string
       responses:
-        "200":
+        '200':
           description: ok
-        "404":
-          description: Not Found
-        "400":
-          description: Bad Request
-components: {}
+        '404':
+          description: 'Not Found'
+        '400':
+          description: 'Bad Request'
