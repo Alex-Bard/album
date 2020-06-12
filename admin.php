@@ -26,7 +26,7 @@ else {
          *         @OA\Schema(
          *             @OA\Property(property="id", type="integer", description="userId"),
          *             @OA\Property(property="role", type="string"),
-         *             @OA\Property(property="login", type="integer")
+         *             @OA\Property(property="login", type="integer"),
          *             @OA\Property(property="tocBot", type="string"),
          *               ),
          *           ),
