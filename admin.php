@@ -17,18 +17,18 @@ else {
         $id = $row["id"];
         /**
          * @OA\Get(
-         *     path="admin",
+         *     path="/admin",
          *     summary="getUsers",
          *     operationId="getUsers",
          *     @OA\Response(
          *         response=200,
-         *         description="ok"
+         *         description="ok",
          *         @OA\Schema(
          *             type="object",
          *             @OA\properties(
          *                  @OA\id(
          *                     type="integer",
-         *                     description=" userId",
+         *                     description="userId",
          *                   ),
          *                  @OA\role(
          *                     type="string",
@@ -41,7 +41,7 @@ else {
          *                   ),
          *               ),
          *           ),
-         *         ),,
+         *         ),
          *),
          */
          if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -68,7 +68,7 @@ else {
         }
          /**
           * @OA\Put(
-          *     path="admin",
+          *     path="/admin",
           *     summary="delete_user",
           *     operationId="delete_user",
           *     @OA\Parameter(
@@ -109,7 +109,7 @@ else {
          }
          /**
           * @OA\Post(
-          *     path="admin",
+          *     path="/admin",
           *     summary="role_user",
           *     operationId="role_user",
           *     @OA\Parameter(

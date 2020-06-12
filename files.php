@@ -53,18 +53,19 @@ $bd->close();
  *         name="date",
  *         in="query",
  *         @OA\Schema(
- *             type="integer"
+ *             type="integer",
  *         ),
  *     ),
  *     @OA\Parameter(
  *         name="start",
  *         in="query",
  *         @OA\Schema(
- *             type="integer"
+ *             type="integer",
+ *         ),
  *     ),
  *     @OA\Response(
  *         response=200,
- *         description="ok"
+ *         description="ok",
  *         @OA\Schema(
  *             type="object",
  *             @OA\properties(
