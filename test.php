@@ -58,12 +58,10 @@ class BDTest extends TestCase{
     }
     public function testBDcreate()
     {
-        global $vars, $bd;
         $this->assertEquals(2, createUser( $this->vars, $this->bd ));
     }
     public function testBDdelete()
     {
-        global $vars, $bd;
         $this->assertEquals(1, deleteUser($this->vars,$this->bd));
     }
 }
