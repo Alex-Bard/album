@@ -65,3 +65,4 @@ class BDTest extends TestCase{
         $this->assertEquals(1, deleteUser($this->vars,$this->bd));
     }
 }
+
