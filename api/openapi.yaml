@@ -5,7 +5,7 @@ info:
 servers:
 - url: /
 paths:
-  admin:
+  /admin:
     put:
       summary: delete_user
       operationId: delete_user
@@ -52,6 +52,31 @@ paths:
         "403":
           description: Forbidden
   /files:
+    get:
+      summary: getFiles
+      operationId: getFiles
+      parameters:
+      - name: date
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: start
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: ok
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
     delete:
       summary: deleteFile
       operationId: deleteFile
@@ -98,7 +123,7 @@ paths:
           description: Bad Request
         "404":
           description: user not found
-  reg:
+  /reg:
     post:
       summary: reg
       operationId: reg
