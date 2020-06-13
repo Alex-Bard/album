@@ -1,5 +1,6 @@
 
 <?php
+//namespace tests;
 use PHPUnit\Framework\TestCase;
 //require_once "bd.php";
 $vars = array(
@@ -66,4 +67,5 @@ class BDTest extends TestCase{
         $this->assertEquals(1, deleteUser($this->vars,$this->bd));
     }
 }
+
 ?>
