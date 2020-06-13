@@ -51,10 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
     }
-
 function regUser($vars,$bd){
     $login = $password = "";
-    if (isset ($vars->login) &&(preg_match( '/[^0-9a-zA-Z]/', $vars->login)) && isset($vars->pass)){
+    if (isset ($vars->login) &&(!preg_match( '/[^0-9a-zA-Z]/', $vars->login)) && isset($vars->pass)){
         $login = $vars->login;
         $password = password_hash($vars->pass, PASSWORD_DEFAULT);
         $token = md5(uniqid($login, true));
@@ -68,7 +67,7 @@ VALUES ('$login', '$password', '$token')";
         else {
             /* echo "Error: " . $sql . "<br>" . $bd->error;*/
           //  header("HTTP/1.0 404 Not Found");
-            echo "Error: " . $sql . "<br>" . $bd->error;
+           // echo "Error: " . $sql . "<br>" . $bd->error;
            // header("HTTP/1.0 403 Forbidden");
             return 0;
         }
