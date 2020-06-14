@@ -5,7 +5,7 @@
  *   version="1.0.0",
  * )
  */
-require 'C:\wamp64\www\course\bd.php';
+require './bd.php';
 if(!isset($_COOKIE['session'])) {
     header('Location: login.html');
 }
