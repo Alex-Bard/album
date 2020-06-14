@@ -66,7 +66,7 @@ function loginUser($vars,$bd){
         $result = mysqli_query($bd, $sql) or die (mysqli_error($bd));
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            print_r($row);
+            //print_r($row);
             if (password_verify($password, $row["pass"])) {
                 $id = $row['id'];
                 $token = md5(uniqid($login, true));
