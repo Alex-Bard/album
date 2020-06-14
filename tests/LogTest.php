@@ -1,15 +1,15 @@
 <?php
 //namespace tests;
 use PHPUnit\Framework\TestCase;
-require_once "C:\wamp64\www\course/login.php";
+require_once "./login.php";
 /*$vars = array(
     'login' => "TestUser123",
     'pass' => "123456789",
 );*/
-class vars{
+/*class vars{
     public $login = "123sdf2@#()";
     PUBLIC $pass = "123456789";
-}
+}*/
 //$vars = new vars;
 class LoginTest extends TestCase{
     private $vars, $bd;

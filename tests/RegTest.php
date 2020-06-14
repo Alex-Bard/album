@@ -1,7 +1,7 @@
 <?php
 //namespace tests;
 use PHPUnit\Framework\TestCase;
-require_once "C:\wamp64\www\course/reg.php";
+require_once "./reg.php";
 /*$vars = array(
     'login' => "TestUser123",
     'pass' => "123456789",

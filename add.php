@@ -50,5 +50,14 @@ foreach ($files as &$file) {
         }
     }
 }
+function addFileToBd($name,$orig,$miniature,$date,$bd,$model,$lat,$long){
+    $sql = "INSERT INTO files (nameFile, orig, miniature, dateFile,model,lat,Clong )
+VALUES ('$name', '$orig', '$miniature','$date','$model','$lat','$long')";
+    if ($bd->query($sql) === TRUE) {
+        return true;
+    } else {
+        print_r ($bd->error);
+    }
+}
 
 $bd-> close();
