@@ -3,6 +3,52 @@ info:
   title: ' family album'
   version: 1.0.0
 paths:
+  /admin:
+    get:
+      summary: getUsers
+      operationId: getUsers
+      responses:
+        '200':
+          description: ok
+    put:
+      summary: delete_user
+      operationId: delete_user
+      parameters:
+        -
+          name: userId
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ok
+        '404':
+          description: 'User Not Found'
+        '400':
+          description: 'Bad Request'
+    post:
+      summary: role_user
+      operationId: role_user
+      parameters:
+        -
+          name: userId
+          in: query
+          schema:
+            type: integer
+        -
+          name: userRole
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ok
+        '404':
+          description: 'User Not Found'
+        '400':
+          description: 'Bad Request'
+        '403':
+          description: Forbidden
   /files:
     get:
       summary: getFiles
