@@ -58,13 +58,6 @@ class LoginTest extends TestCase{
         // $this->assertEquals(1, regUser( $this->vars, $this->bd ));
         $this->assertEquals(0, loginUser( $vars, $this->bd ));
     }
-
-    public function testIncorrectPassword()
-    {
-        $this->vars->login = "TestUser123";
-        $this->vars->pass = "123";
-        $this->assertEquals(0, loginUser($this->vars,$this->bd));
-    }
     public function testEmptyLoginAndPass()
     {
         $this->vars->login = NULL;
