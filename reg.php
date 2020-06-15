@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("HTTP/1.0 403 Forbidden");
             break;
         case 2:
-            header("HTTP/1.0 200 ok");
+            header('Location: index.html');
             break;
 
     }

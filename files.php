@@ -42,6 +42,9 @@ else {
             }
         }
     }
+    else {
+        header('Location: login.html');
+    }
 }
 $bd->close();
 /**
